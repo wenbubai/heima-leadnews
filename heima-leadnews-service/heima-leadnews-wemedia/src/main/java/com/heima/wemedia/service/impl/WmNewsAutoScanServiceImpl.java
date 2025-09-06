@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -123,6 +124,7 @@ public class WmNewsAutoScanServiceImpl implements WmNewsAutoScanService {
     }
 
     @Autowired
+    @Qualifier("com.heima.apis.article.IArticleClient")
     private IArticleClient articleClient;
 
     @Autowired
@@ -135,7 +137,7 @@ public class WmNewsAutoScanServiceImpl implements WmNewsAutoScanService {
      * 保存app端相关的文章数据
      * @param wmNews
      */
-    private ResponseResult saveAppArticle(WmNews wmNews) {
+    public ResponseResult saveAppArticle(WmNews wmNews) {
 
         ArticleDto dto = new ArticleDto();
         //属性的拷贝
@@ -337,4 +339,7 @@ public class WmNewsAutoScanServiceImpl implements WmNewsAutoScanService {
         return resultMap;
 
     }
+
+
+
 }
