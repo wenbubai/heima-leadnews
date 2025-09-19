@@ -21,7 +21,8 @@ public class ArticleHomeController {
     public ResponseResult load(@RequestBody ArticleHomeDto dto) {
         // 默认加载更多
 
-        return apArticleService.load(ArticleConstants.LOADTYPE_LOAD_MORE, dto);
+//        return apArticleService.load(ArticleConstants.LOADTYPE_LOAD_MORE, dto);
+        return apArticleService.load2(dto, ArticleConstants.LOADTYPE_LOAD_MORE,true);
     }
 
 
